@@ -6,24 +6,12 @@
 }
 
 :root {
-  font-size: 20px;
+  font-size: 25px;
   --color-primary: rgb(13, 39, 185);
-  --color-text: coral;
-  --bg-point-a: #333;
-  --bg-point-b: #999;
-}
-
-a {
-  text-decoration: none;
-}
-
-/* custom */
-.light {
-  --color-primary: dodgerblue;
-}
-
-.night {
-  --color-primary: darkslategray;
+  --color-text: #000;
+  --bg-gradient: linear-gradient(to right, #999, #777);
+  --bg-primary: #333;
+  --bg-secondary: #999;
 }
 
 body {
@@ -31,16 +19,41 @@ body {
   color: var(--color-text);
 }
 
-main {
+/* custom theme*/
+.light {
+  --color-primary: dodgerblue;
+}
+
+.night {
+  --color-primary: darkslategray;
+  --color-primary: rgb(13, 39, 185);
+  --color-text: rgb(185, 184, 184);
+  --bg-gradient: linear-gradient(to right, rgb(5, 10, 71), rgb(3, 8, 61));
+  --bg-primary: #333;
+  --bg-secondary: rgb(5, 10, 71);
+}
+
+a {
+  text-decoration: none;
+}
+
+.section-a {
   padding: 2rem;
   height: 40%;
   font-size: 1rem;
-  background-image: linear-gradient(
-    to right,
-    var(--bg-point-a),
-    var(--bg-point-b)
-  );
-  transition: background-image 5s ease, color 3s ease-out 0.2s;
+  font-weight: bold;
+  background: var(--bg-gradient);
+  /* transition: color 1000ms ease-out, background 1000ms ease-out; */
+  transition: color 1000ms ease-in-out 100ms;
+}
+
+.section-b {
+  padding: 2rem;
+  height: 40%;
+  font-size: 1rem;
+  font-weight: bold;
+  background: var(--bg-secondary);
+  transition: color 1000ms ease-in-out 100ms, background 1000ms ease-out;
 }
 
 /* >header */
@@ -48,6 +61,9 @@ header {
   display: flex;
   align-items: center;
   padding: 0 1.5rem;
+
+  color: var(--color-text);
+  background: var(--bg-gradient);
 }
 
 .navbar {
