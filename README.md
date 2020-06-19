@@ -10,6 +10,8 @@ CSS variables
 
 
 ✔
+
+
 you set up variable in CSS on :root
 
 
