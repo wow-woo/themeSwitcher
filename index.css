@@ -7,37 +7,79 @@
 
 :root {
   font-size: 25px;
-  --color-primary: rgb(13, 39, 185);
-  --color-text: #000;
-  --bg-gradient: linear-gradient(to right, #999, #777);
-  --bg-primary: #333;
-  --bg-secondary: #999;
+  --color-solar: rgb(216, 238, 92);
+  --color-light-blue: rgb(131, 154, 177);
+  --color-dodger: dodgerblue;
+  --color-white: #fff;
+  --color-black: #000;
+  --color--light-grey: rgb(185, 184, 184);
+  --color-grey: #999;
+  --color-brown: #333;
+  --color-navy: rgb(5, 10, 71);
+  --color-gradient-light: linear-gradient(to right, #999 30%, #777);
+  --color-gradient-night: linear-gradient(
+    to right,
+    rgb(5, 10, 71),
+    rgb(3, 8, 61)
+  );
 }
 
 body {
   height: 100vh;
-  color: var(--color-text);
+  color: var(--text-normal);
+  background-color: var(--color-light-blue);
 }
 
 /* custom theme*/
+.solar {
+  --color-solar: rgb(222, 238, 129);
+  --color-light-blue: rgb(169, 190, 211);
+  --color-dodger: rgb(75, 165, 255);
+  --color-white: rgb(219, 215, 215);
+  --color-black: rgb(63, 61, 61);
+  --color--light-grey: rgb(212, 211, 211);
+  --color-grey: rgb(179, 179, 179);
+  --color-brown: rgb(83, 83, 83);
+  --color-navy: rgb(23, 31, 117);
+  --color-gradient-light: linear-gradient(
+    to right,
+    rgb(201, 194, 194) 30%,
+    rgb(173, 170, 170)
+  );
+  --color-gradient-night: linear-gradient(
+    to right,
+    rgb(19, 27, 114),
+    rgb(27, 36, 136)
+  );
+}
 .light {
-  --color-primary: dodgerblue;
+  --point-edge: var(--color-dodger);
+  --text-normal: var(--color-black);
+  --text-dropdown: rgb(248, 248, 248);
+  --bg-gradient: var(--color-gradient-light);
+  --bg-primary: var(--color-brown);
+  --bg-secondary: var(--color-grey);
+  --bg-dropdown: var(--color-black);
 }
 
 .night {
-  --color-primary: darkslategray;
-  --color-primary: rgb(13, 39, 185);
-  --color-text: rgb(185, 184, 184);
-  --bg-gradient: linear-gradient(to right, rgb(5, 10, 71), rgb(3, 8, 61));
-  --bg-primary: #333;
-  --bg-secondary: rgb(5, 10, 71);
+  --point-edge: var(--color-light-blue);
+  --text-normal: var(--color--light-grey);
+  --text-dropdown: var(--color-dodger);
+  --bg-gradient: var(--color-gradient-night);
+  --bg-primary: var(--color-brown);
+  --bg-secondary: var(--color-navy);
+  --bg-dropdown: var(--color-white);
 }
-
+ul {
+  list-style-type: none;
+}
 a {
   text-decoration: none;
 }
 
 .section-a {
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%, 0 0);
   padding: 2rem;
   height: 40%;
   font-size: 1rem;
@@ -62,7 +104,7 @@ header {
   align-items: center;
   padding: 0 1.5rem;
 
-  color: var(--color-text);
+  color: var(--text-normal);
   background: var(--bg-gradient);
 }
 
@@ -81,9 +123,57 @@ header {
   display: flex;
   align-items: center;
   padding: 0.5rem;
-  color: var(--color-text);
+  color: var(--text-normal);
 }
 
 #logo {
   cursor: pointer;
+}
+
+.theme-item {
+  position: relative;
+}
+.theme-item:focus-within .dropdown {
+  opacity: 1;
+}
+.dropdown {
+  width: 400%;
+  height: 2rem;
+  position: absolute;
+  z-index: 99;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 0.2rem solid var(--point-edge);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  background-color: var(--bg-dropdown);
+}
+
+.dropdown a::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.dropdown a {
+  color: var(--text-dropdown);
+  padding-left: 10px;
+}
+
+.btn-light::before {
+  background-color: #fff;
+  border: 0.15rem solid rgb(63, 18, 18);
+}
+.btn-night::before {
+  background-color: rgb(51, 49, 49);
+  border: 0.15rem solid rgb(11, 14, 163);
+}
+.btn-solar::before {
+  background-color: var(--color-solar);
+  border: 0.15rem solid rgb(19, 88, 56);
 }

@@ -1,26 +1,35 @@
-const logo = document.querySelector("#logo");
 const html = document.documentElement;
 const body = document.body;
+const dropdownBtn = document.querySelector(".dropdown-open");
 
-const main = document.querySelector("section-a");
+//buttons
+const btnLight = document.querySelector(".btn-light");
+const btnNight = document.querySelector(".btn-night");
+const btnSolar = document.querySelector(".btn-solar");
 
-logo.addEventListener("click", () => {
-  const theme = window.localStorage.getItem("theme");
+btnLight.addEventListener("click", () => {
+  body.classList.replace("night", "light");
+  window.localStorage.setItem("theme", "light");
+  console.log(window.localStorage.getItem("theme"));
+});
+btnNight.addEventListener("click", () => {
+  body.classList.replace("light", "night");
+  window.localStorage.setItem("theme", "night");
+  console.log(window.localStorage.getItem("theme"));
+});
 
-  if (theme === "light") {
-    console.log(theme);
-    body.classList.replace("light", "night");
-    window.localStorage.setItem("theme", "night");
-    console.log(window.localStorage.getItem("theme"));
+btnSolar.addEventListener("click", () => {
+  const solar = window.localStorage.getItem("solar");
+
+  if (solar) {
+    btnSolar.textContent = "Solar";
+    body.classList.remove("solar");
+    window.localStorage.removeItem("solar");
+    console.log(window.localStorage.getItem("solar"));
   } else {
-    body.classList.replace("night", "light");
-    window.localStorage.setItem("theme", "light");
-    console.log(window.localStorage.getItem("theme"));
+    btnSolar.textContent = "Normal";
+    body.classList.add("solar");
+    window.localStorage.setItem("solar", "true");
+    console.log(window.localStorage.getItem("solar"));
   }
-  //   html.style.setProperty(
-  //     "--bg-gradient",
-  //     "linear-gradient(to right, #500, #700)"
-  //   );
-  //   html.style.setProperty("--color-text", "#fff");
-  //   html.style.setProperty("--bg-secondary", "#700");
 });
